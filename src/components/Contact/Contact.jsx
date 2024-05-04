@@ -5,7 +5,12 @@ import css from "./Contact.module.css";
 import { deleteContact } from "../../redux/contactsSlice";
 import { useDispatch } from "react-redux";
 
-export default function Contact({ contact: { id, info } }) {
+export default function Contact({
+  contact: {
+    id,
+    info: { name, number },
+  },
+}) {
   const dispatch = useDispatch();
 
   return (
@@ -13,11 +18,11 @@ export default function Contact({ contact: { id, info } }) {
       <div>
         <p>
           <FaUser className={css.iconContact} />
-          {info.name}
+          {name}
         </p>
         <p>
           <FaPhoneAlt className={css.iconContact} />
-          {info.number}
+          {number}
         </p>
       </div>
       <button
