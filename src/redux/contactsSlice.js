@@ -12,7 +12,7 @@ const contactsSlice = createSlice({
       prepare: (contact) => {
         return {
           payload: {
-            contact,
+            info: contact,
             id: nanoid(),
           },
         };
@@ -20,8 +20,9 @@ const contactsSlice = createSlice({
     },
 
     deleteContact(state, action) {
-      const index = state.findIndex((contact) => contact.id === action.payload);
-      state.splice(index, 1);
+      state.items = state.items.filter(
+        (contact) => contact.id !== action.payload
+      );
     },
   },
 });
